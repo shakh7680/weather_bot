@@ -28,7 +28,7 @@ async def weather(message: types.Message):
 
     try:
         today_weather = res_from_url["current"]["temp_c"]
-        response = f'Bugun {city}da havo harodati {today_weather}\u2103 daraja.'
+        response = f'Bugun {city.capitalize()}da havo harorati {today_weather}\u2103 daraja.'
     except:
         response = f'Bunday shahar mavjud emas'
     await message.reply(response)
