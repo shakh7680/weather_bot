@@ -25,8 +25,12 @@ async def weather(message: types.Message):
     city = message.text
     url = f'https://api.weatherapi.com/v1/forecast.json?key={config.API_KEY}&q={city}'
     res_from_url = requests.get(url).json()
-    today_weather = res_from_url["current"]["temp_c"]
-    response = f'Bugun {city}da havo harodati {today_weather}\u2103 daraja.'
+
+    try:
+        today_weather = res_from_url["current"]["temp_c"]
+        response = f'Bugun {city}da havo harodati {today_weather}\u2103 daraja.'
+    except:
+        response = f'Bunday shahar mavjud emas'
     await message.reply(response)
 
 if __name__ == '__main__':
